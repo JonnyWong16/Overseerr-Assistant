@@ -19,16 +19,10 @@ function arrangeMargins() {
 }
 
 function getPlexToken() {
-    let imageElements = $('img').filter(function() {
-        return $(this).attr('src').includes('X-Plex-Token');
-    });
-    if (imageElements.length > 0) {
-        let pattern = /.X-Plex-Token=(\w+)/;
-        let matches = imageElements.attr('src').match(pattern);
-        if (matches !== null && matches.length > 1) {
-            return matches[1];
-        }
-    }
+    let plexToken = localStorage.getItem('myPlexAccessToken');
+	if (plexToken !== null) {
+		return plexToken;
+	}
     return null;
 }
 
